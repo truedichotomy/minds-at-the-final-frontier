@@ -11,6 +11,11 @@ on:
     branches: [main]
   workflow_dispatch: {}
 
+# Run the JS-based actions on Node.js 24 ahead of GitHub's forced migration
+# (2026-06-16), so the deprecated Node 20 runtime never becomes a failure point.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 # Permissions required by the GitHub Pages deployment action.
 permissions:
   contents: read
