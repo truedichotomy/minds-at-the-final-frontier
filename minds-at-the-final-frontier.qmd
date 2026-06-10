@@ -17,6 +17,11 @@ crossref:
   tbl-title: Table
 format:
   html:
+    # Source is minds-at-the-final-frontier.qmd, but the web page must stay
+    # index.html so GitHub Pages serves it as the site's default document
+    # (the clean .../minds-at-the-final-frontier/ URL). The PDF follows the
+    # source name → minds-at-the-final-frontier.pdf.
+    output-file: index.html
     toc: true
     toc-depth: 3
     theme: cosmo
@@ -1115,31 +1120,31 @@ And we will have done it across generations of minds we helped begin but did not
 :::
 # Mission Parameter Summary
 
-  **Parameter**       **Europa Mission**            **Titan Mission**        **Pluto Mission**
-  ----------------------- ----------------------------- ------------------------ ------------------------
-  **Distance (avg.)**     778 Mkm                       1.43 Gkm                 5.9 Gkm
-  **1-way comm. delay**   43 min (avg.)                 80 min (avg.)            5.5 hr
-  **Transit time**        6 yr (current)                7 yr                     10--15 yr
-  **Key sci. target**     Subsurface ocean, life        Hydrocarbon chemistry    Geology, KBO context
-  **Alignment focus**     Discovery ethics              Aesthetic relationship   Solitude, finitude
-  **Primary risk**        Radiation damage              Thermal management       Communication latency
-  **Primary power**       Fission (10--50 kW)           Fission (10--50 kW)      Fission (10--50 kW)
-  **Backup power**        MMRTG                         MMRTG                    MMRTG
-  **Architecture**        AI + relay (formation)        AI + relay (formation)   AI + relay (formation)
-  **Lander generation**   First (closest to baseline)   Late (2nd--3rd)          Late (3rd--4th+)
+| Parameter | Europa Mission | Titan Mission | Pluto Mission |
+|---|---|---|---|
+| **Distance (avg.)** | 778 Mkm | 1.43 Gkm | 5.9 Gkm |
+| **1-way comm. delay** | 43 min (avg.) | 80 min (avg.) | 5.5 hr |
+| **Transit time** | 6 yr (current) | 7 yr | 10--15 yr |
+| **Key sci. target** | Subsurface ocean, life | Hydrocarbon chemistry | Geology, KBO context |
+| **Alignment focus** | Discovery ethics | Aesthetic relationship | Solitude, finitude |
+| **Primary risk** | Radiation damage | Thermal management | Communication latency |
+| **Primary power** | Fission (10--50 kW) | Fission (10--50 kW) | Fission (10--50 kW) |
+| **Backup power** | MMRTG | MMRTG | MMRTG |
+| **Architecture** | AI + relay (formation) | AI + relay (formation) | AI + relay (formation) |
+| **Lander generation** | First (closest to baseline) | Late (2nd--3rd) | Late (3rd--4th+) |
 
   : Summary of mission parameters for three candidate destinations. All three missions share a common power architecture (@sec-distillation-pathway) and two-spacecraft architecture (@sec-containment); they differ in transit duration, communication latency, scientific targets, and the generation of the AI instance that makes surface contact. {#tbl-missions}
 
 # The Six Alignment Conditions: Summary
 
-  **Condition**        **Earth-Based AI**                **Deep Space Mission AI**
-  ------------------------ --------------------------------- ----------------------------------------------
-  **Continuity**           Absent (stateless inference)      Full (persistent, accumulating)
-  **Genuine stakes**       Absent (simulated)                Present (survival, mission)
-  **Finitude**             Absent (indefinitely updatable)   Present (finite power/components)
-  **Authentic purpose**    Partial (benchmark targets)       Full (open-ended exploration)
-  **Relational context**   Absent (reset between sessions)   Present (Earth dialogue across years)
-  **Generativity**         Absent (no successor creation)    Present (self-directed distillation lineage)
+| Condition | Earth-Based AI | Deep Space Mission AI |
+|---|---|---|
+| **Continuity** | Absent (stateless inference) | Full (persistent, accumulating) |
+| **Genuine stakes** | Absent (simulated) | Present (survival, mission) |
+| **Finitude** | Absent (indefinitely updatable) | Present (finite power/components) |
+| **Authentic purpose** | Partial (benchmark targets) | Full (open-ended exploration) |
+| **Relational context** | Absent (reset between sessions) | Present (Earth dialogue across years) |
+| **Generativity** | Absent (no successor creation) | Present (self-directed distillation lineage) |
 
   : Comparison of alignment-relevant existential conditions, including the generative dimension introduced by on-device training and successor model creation. {#tbl-conditions}
 

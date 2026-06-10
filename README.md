@@ -5,14 +5,14 @@
 📖 **Read the web edition:** <https://truedichotomy.github.io/minds-at-the-final-frontier/>
 
 This repository is the **Quarto edition** of the manuscript. It holds a single
-semantic source (`index.qmd`) from which both a web edition (HTML) and a
+semantic source (`minds-at-the-final-frontier.qmd`) from which both a web edition (HTML) and a
 print edition (PDF) are rendered by [Quarto](https://quarto.org). It is a
 standalone repository, deliberately separate from the original hand-rolled
 LaTeX→HTML build, so the two toolchains never entangle.
 
 The design goal is clean separation of the three layers:
 
-- **content** — prose, structure, cross-references, citations live in `index.qmd`;
+- **content** — prose, structure, cross-references, citations live in `minds-at-the-final-frontier.qmd`;
 - **figures** — standalone vector assets in `figures/`, generated from authentic
   TikZ/pgfplots sources in `figures-src/`;
 - **presentation** — per-format options in `_quarto.yml` / the document front
@@ -25,7 +25,7 @@ to differ in presentation.
 ## Repository structure
 
 ```
-index.qmd              The manuscript (Quarto Markdown) — the single source of truth
+minds-at-the-final-frontier.qmd              The manuscript (Quarto Markdown) — the single source of truth
 _quarto.yml            Project metadata + output directory
 references.bib         Bibliography (BibLaTeX/BibTeX; 28 entries, 24 cited)
 styles.css             HTML reading-column styling
@@ -44,7 +44,7 @@ figures-src/           Authentic figure sources
 conversion/
   assemble_qmd.py        the one-shot LaTeX→Quarto migration script (provenance)
 .github/workflows/
-  publish.yml            CI: render HTML and deploy to GitHub Pages on push to main
+  publish.yml            CI: render HTML + PDF and deploy to GitHub Pages on push to main
 CLAUDE.md              Orientation notes for AI coding assistants
 LICENSE                CC BY 4.0 (content)
 LICENSE-CODE           MIT (code/tooling)
@@ -79,14 +79,17 @@ quarto preview           # live-reloading local preview while editing
 
 ## Publishing
 
-The web edition is published to **GitHub Pages** automatically. On every push to
-`main`, `.github/workflows/publish.yml` renders the HTML edition and deploys it to:
+The manuscript is published to **GitHub Pages** automatically. On every push to
+`main`, `.github/workflows/publish.yml` renders both editions and deploys them to:
 
 <https://truedichotomy.github.io/minds-at-the-final-frontier/>
 
-The CI build is **HTML-only by design** — figures ship as committed SVGs, so no
-LaTeX is needed in CI and builds stay fast (~30 s). The PDF is **not** part of the
-published site; build it locally on demand with `quarto render --to pdf`.
+The web page is served as `index.html` (so the URL above resolves with no
+redirect — see the `output-file` override in the front matter), with a
+"Download PDF" link to the print edition, published alongside as
+`minds-at-the-final-frontier.pdf`. Building the PDF needs a LaTeX toolchain
+(TinyTeX) and an SVG rasteriser (librsvg), both installed by the workflow; expect
+builds of ~2–3 min.
 
 The deployment uses GitHub's native Pages action (no `gh-pages` branch). It is
 enabled once under **Settings → Pages → Source: GitHub Actions**; after that,
@@ -125,7 +128,7 @@ Keep these consistent so cross-references and callouts keep working:
 `conversion/assemble_qmd.py` is the exact script used to migrate the LaTeX
 source to Quarto Markdown (citation, cross-reference, figure, callout, and table
 transforms). It is kept for transparency and is **not** part of the render path;
-the living source is `index.qmd`.
+the living source is `minds-at-the-final-frontier.qmd`.
 
 ## Citation
 
@@ -134,6 +137,6 @@ the living source is `index.qmd`.
 
 ## License
 
-Content (`index.qmd`, figures, prose) — **CC BY 4.0** (`LICENSE`).
+Content (`minds-at-the-final-frontier.qmd`, figures, prose) — **CC BY 4.0** (`LICENSE`).
 Code and tooling (`figures-src/`, `conversion/`, scripts) — **MIT**
 (`LICENSE-CODE`). See `LICENSING.md` for the rationale.
