@@ -36,8 +36,9 @@ tex/
 figures/               Rendered vector assets: <name>.svg (web) + <name>.pdf (print)
 figures-src/           Authentic figure sources
   _preamble.tex          shared colors + tikz libraries + pgfplots setup
-  architecture.tex       the four standalone TikZ/pgfplots figures …
+  architecture.tex       the five standalone TikZ/pgfplots figures …
   powercurve.tex
+  gravitywell.tex
   lifecycle.tex
   conditions.tex
   build-figures.sh       regenerates figures/ from these sources
@@ -97,7 +98,7 @@ publishing is fully automatic.
 
 ## Figures
 
-The four figures are the manuscript's original TikZ/pgfplots figures, compiled
+The five figures are the manuscript's original TikZ/pgfplots figures, compiled
 standalone to vector and emitted in two formats: `.svg` for the web edition and
 `.pdf` for the print edition. They are the authentic figures — not screen
 redraws — so both editions show the same diagrams the typeset PDF does.

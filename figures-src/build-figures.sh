@@ -5,7 +5,7 @@
 set -e
 cd "$(dirname "$0")"
 mkdir -p ../figures
-for f in architecture powercurve lifecycle conditions; do
+for f in architecture powercurve gravitywell lifecycle conditions; do
   echo "building $f ..."
   pdflatex -interaction=nonstopmode -halt-on-error "$f.tex" >/dev/null
   pdftocairo -svg "$f.pdf" "../figures/$f.svg"
