@@ -1,0 +1,79 @@
+<!-- Front-matter presentation enhancements (web edition). Two behaviours:
+
+     1. Reveal the right-hand table of contents only after the reader has
+        scrolled past the Abstract. The title block, epigraphs, and abstract all
+        read as a centred "cover"; the TOC appears once the main text begins.
+        Pairs with the `#quarto-margin-sidebar` rules in styles.css.
+
+     2. Horizontally centre those cover sections in the viewport. Quarto's
+        "toc-right" layout reserves a right gutter for the TOC, leaving the
+        content column — and everything in it — offset to the left. Since the
+        TOC is hidden across the whole cover, we re-centre the title, epigraphs,
+        and abstract in the full viewport; the main body keeps its TOC-aware
+        column.
+
+     Pure enhancement: with JS off, the TOC simply stays visible and the cover
+     keeps Quarto's default (slightly left) position. -->
+<script>
+  (function () {
+    var COVER_SELECTORS = ["#title-block-header", ".epigraphs", ".abstract-section"];
+
+    // 1. Reveal the TOC once the Abstract has scrolled fully above the viewport.
+    //    A scroll listener (not IntersectionObserver) is used so that jumping
+    //    past the abstract via an anchor link or a fast fling still updates —
+    //    an observer can miss a jump that skips the intersecting state entirely.
+    function makeTocUpdater() {
+      var sidebar = document.getElementById("quarto-margin-sidebar");
+      var anchor = document.querySelector(".abstract-section") ||
+                   document.getElementById("title-block-header");
+      if (!sidebar || !anchor) {
+        document.body.classList.add("mff-toc-reveal");
+        return null;
+      }
+      return function () {
+        // bottom <= 0  ⇒  the abstract is entirely above the viewport top.
+        document.body.classList.toggle("mff-toc-reveal", anchor.getBoundingClientRect().bottom <= 0);
+      };
+    }
+
+    // 2. Shift each cover section so its centre sits at the viewport centre.
+    function centerCover() {
+      COVER_SELECTORS.forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (!el) return;
+        el.style.transform = "none"; // reset so the measurement is unbiased
+        var rect = el.getBoundingClientRect();
+        var shift = Math.round(window.innerWidth / 2 - (rect.left + rect.width / 2));
+        el.style.transform = Math.abs(shift) > 1 ? "translateX(" + shift + "px)" : "none";
+      });
+    }
+
+    function init() {
+      var updateToc = makeTocUpdater();
+      centerCover();
+      if (updateToc) updateToc();
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          if (updateToc) updateToc();
+          ticking = false;
+        });
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("load", centerCover); // re-measure after late layout
+      window.addEventListener("resize", function () {
+        centerCover();
+        if (updateToc) updateToc();
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+</script>

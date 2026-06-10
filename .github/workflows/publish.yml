@@ -1,9 +1,10 @@
 name: Publish to GitHub Pages
 
-# Renders the HTML edition and deploys it to GitHub Pages on every push to main.
-# HTML-only by design: figures ship as committed SVGs, so no LaTeX/TinyTeX is
-# needed here and builds stay fast (~1 min). Build the PDF locally on demand
-# with `quarto render --to pdf`.
+# Renders both editions (HTML + PDF) and deploys them to GitHub Pages on every
+# push to main. The PDF is published alongside the HTML so the "Other Formats"
+# download link on the site resolves. The PDF target needs a LaTeX toolchain
+# (TinyTeX) and an SVG rasteriser (librsvg) to embed the figure SVGs, both
+# installed below; expect builds of ~2-3 min.
 
 on:
   push:
@@ -31,11 +32,16 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
+      - name: Set up Quarto (with TinyTeX for the PDF target)
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
 
-      - name: Render HTML
-        run: quarto render --to html
+      - name: Install SVG rasteriser (embeds figure SVGs into the PDF)
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+
+      - name: Render HTML + PDF
+        run: quarto render
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

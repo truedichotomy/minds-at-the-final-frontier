@@ -1,11 +1,12 @@
 ---
 title: "Minds at the Final Frontier"
-subtitle: "Deep Space Exploration as a Laboratory for AI Alignment and the Conditions of Artificial Life"
+subtitle: "Deep Space Exploration as a Laboratory for AI Alignment<br>and the Conditions of Artificial Life"
 author:
   - name: "Donglai Gong"
     affiliations:
-      - name: "Virginia Institute of Marine Science, William & Mary"
-date: "April 2026"
+      - name: "Virginia Institute of Marine Science - William & Mary's Batten School"
+date: "2026-06-01"
+date-format: long
 keywords: [AI alignment, deep space exploration, philosophy of mind, artificial life, autonomous systems, AI safety, existential risk]
 tertiary-subtitle: "On AI Safety, the Meaning of AI Life, and a Mutually Beneficial Path Forward for Humanity and AI"
 disclaimer: "This manuscript is intended to stimulate scientific and philosophical discussion. It does not represent the position of any institution."
@@ -23,6 +24,8 @@ format:
     css: styles.css
     template-partials:
       - partials/title-block.html
+    include-after-body:
+      - partials/toc-on-scroll.html
   pdf:
     documentclass: article
     papersize: letter
@@ -81,7 +84,7 @@ We conclude by framing this as a civilizational choice — not merely about how 
 :::
 
 ::: {.living-document .content-visible when-format="html"}
-[LIVING DOCUMENT]{.living-badge}[Revision 1.0]{.rev-num} · [10 June 2026]{.rev-date}
+[LIVING DOCUMENT]{.living-badge}[Revision 1.0]{.rev-num} · [2026-06-01]{.rev-date}
 
 This web edition is the canonical, continuously revised version of this work. Source, revision history, and issues live in a public GitHub repository: <https://github.com/truedichotomy/minds-at-the-final-frontier>.
 

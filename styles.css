@@ -67,7 +67,7 @@ blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-a
 #title-block-header .subtitle.lead {
   font-family: var(--mff-serif); font-weight: 400;
   font-size: clamp(1.12rem, 2.2vw, 1.4rem);
-  line-height: 1.45; color: #41464d; max-width: 34rem; margin: 0.7rem auto 0;
+  line-height: 1.45; color: #41464d; max-width: 44rem; margin: 0.7rem auto 0;
 }
 #title-block-header .subtitle-tertiary {
   font-family: var(--mff-serif); font-style: italic;
@@ -78,17 +78,28 @@ blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-a
   content: ""; display: block; width: 46px; height: 1px;
   background: var(--mff-gold, #b48c28); opacity: 0.75; margin: 2rem auto 0;
 }
-#title-block-header .quarto-title-meta,
+/* Author + affiliation: stack vertically, centered.
+   `!important` overrides Quarto's theme rule
+   `#title-block-header.quarto-title-block.default .quarto-title-meta-author`,
+   which sets a 2-column grid at higher specificity. */
 #title-block-header .quarto-title-meta-author {
-  display: block; grid-template-columns: none; gap: 0;
-  text-align: center; margin-top: 2.2rem;
+  display: flex !important; flex-direction: column; align-items: center;
+  gap: 0.2rem; text-align: center; margin-top: 2.2rem;
 }
+/* Date block: same theme-grid override as the author block, else the single
+   date lands in the grid's left column and reads off-centre. */
+#title-block-header .quarto-title-meta {
+  display: block !important; grid-template-columns: none; gap: 0;
+  text-align: center; margin-top: 0.7rem;
+}
+#title-block-header .quarto-title-meta > div { display: block; text-align: center; }
 #title-block-header .quarto-title-meta-heading { display: none; }
 #title-block-header .quarto-title-meta-contents { display: block; }
 #title-block-header .author { font-size: 1.05rem; color: #1a1a1a; margin: 0; }
 #title-block-header .affiliation { font-size: 0.9rem; color: #555; margin: 0.25rem 0 0; }
 #title-block-header .date { font-size: 0.82rem; color: #777; letter-spacing: 0.05em; margin: 0.7rem 0 0; }
-#title-block-header .keywords { margin-top: 2rem; font-size: 0.8rem; color: #777; line-height: 1.7; max-width: 34rem; }
+/* `!important`: theme rule (…default .keywords) forces margin-top:0 at higher specificity */
+#title-block-header .keywords { margin-top: 1.9rem !important; font-size: 0.8rem; color: #777; line-height: 1.7; max-width: 34rem; }
 #title-block-header .keywords .block-title { font-weight: 600; color: #555; display: inline; margin-right: 0.35rem; }
 #title-block-header .title-disclaimer {
   font-family: var(--mff-serif); font-style: italic;
@@ -125,3 +136,15 @@ blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-a
 section.level1 > h1 { margin-top: 3.4rem; }
 section.level2 > h2 { margin-top: 2.4rem; }
 figure { margin-top: 2.2rem; margin-bottom: 2.2rem; }
+
+/* ===== TOC reveal: hide the right sidebar on the title screen, fade in after ===== */
+/* Toggled by partials/toc-on-scroll.html once the title block scrolls out of view. */
+#quarto-margin-sidebar {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+body.mff-toc-reveal #quarto-margin-sidebar {
+  opacity: 1;
+  pointer-events: auto;
+}
