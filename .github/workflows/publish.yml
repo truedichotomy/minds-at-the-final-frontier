@@ -39,6 +39,11 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          # Enable Pages via the API on first run so no manual dashboard step is
+          # needed (also makes the repo reproducible on forks/clones). Requires
+          # the `pages: write` permission granted above.
+          enablement: true
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
