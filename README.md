@@ -2,6 +2,8 @@
 
 *Deep Space Exploration as a Laboratory for AI Alignment and the Conditions of Artificial Life*
 
+📖 **Read the web edition:** <https://truedichotomy.github.io/minds-at-the-final-frontier/>
+
 This repository is the **Quarto edition** of the manuscript. It holds a single
 semantic source (`index.qmd`) from which both a web edition (HTML) and a
 print edition (PDF) are rendered by [Quarto](https://quarto.org). It is a
@@ -14,7 +16,8 @@ The design goal is clean separation of the three layers:
 - **figures** — standalone vector assets in `figures/`, generated from authentic
   TikZ/pgfplots sources in `figures-src/`;
 - **presentation** — per-format options in `_quarto.yml` / the document front
-  matter, plus `styles.css` for the HTML reading column.
+  matter, plus `styles.css` and the HTML title-block partial (`partials/`) for
+  the web edition, and the LaTeX title page (`tex/`) for print.
 
 The HTML and PDF editions are intended to be **identical in content** while free
 to differ in presentation.
@@ -26,6 +29,10 @@ index.qmd              The manuscript (Quarto Markdown) — the single source of
 _quarto.yml            Project metadata + output directory
 references.bib         Bibliography (BibLaTeX/BibTeX; 28 entries, 24 cited)
 styles.css             HTML reading-column styling
+partials/
+  title-block.html       custom HTML title block (subtitle, disclaimer)
+tex/
+  titlepage.tex          custom LaTeX title page for the PDF edition
 figures/               Rendered vector assets: <name>.svg (web) + <name>.pdf (print)
 figures-src/           Authentic figure sources
   _preamble.tex          shared colors + tikz libraries + pgfplots setup
@@ -36,10 +43,19 @@ figures-src/           Authentic figure sources
   build-figures.sh       regenerates figures/ from these sources
 conversion/
   assemble_qmd.py        the one-shot LaTeX→Quarto migration script (provenance)
+.github/workflows/
+  publish.yml            CI: render HTML and deploy to GitHub Pages on push to main
+CLAUDE.md              Orientation notes for AI coding assistants
 LICENSE                CC BY 4.0 (content)
 LICENSE-CODE           MIT (code/tooling)
 LICENSING.md           dual-license rationale
+_output/               Render target (HTML + PDF) — git-ignored, built on demand
 ```
+
+Rendered output (`_output/`) and Quarto's caches are git-ignored — the source is
+the source of truth, and the published site is rebuilt by CI (see **Publishing**).
+The committed vector files in `figures/` are the one deliberate exception: they
+are slow to regenerate, so they are versioned as a build-of-record.
 
 ## Rendering
 
@@ -60,6 +76,21 @@ quarto preview           # live-reloading local preview while editing
 - **`rsvg-convert`** (Debian/Ubuntu: `apt install librsvg2-bin`) so the PDF
   build can convert the figure SVGs to PDF. If you prefer, point the figure
   includes at the `.pdf` assets instead — both are shipped in `figures/`.
+
+## Publishing
+
+The web edition is published to **GitHub Pages** automatically. On every push to
+`main`, `.github/workflows/publish.yml` renders the HTML edition and deploys it to:
+
+<https://truedichotomy.github.io/minds-at-the-final-frontier/>
+
+The CI build is **HTML-only by design** — figures ship as committed SVGs, so no
+LaTeX is needed in CI and builds stay fast (~30 s). The PDF is **not** part of the
+published site; build it locally on demand with `quarto render --to pdf`.
+
+The deployment uses GitHub's native Pages action (no `gh-pages` branch). It is
+enabled once under **Settings → Pages → Source: GitHub Actions**; after that,
+publishing is fully automatic.
 
 ## Figures
 
