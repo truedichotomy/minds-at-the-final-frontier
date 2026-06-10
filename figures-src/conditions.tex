@@ -1,0 +1,48 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, shapes.geometric, backgrounds, fit}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+\definecolor{deepblue}{RGB}{10, 40, 90}
+\definecolor{spaceblue}{RGB}{30, 80, 160}
+\definecolor{lightgray}{RGB}{245, 245, 248}
+\definecolor{accentgold}{RGB}{180, 140, 40}
+\definecolor{earthgreen}{RGB}{40, 120, 80}
+\definecolor{warnred}{RGB}{170, 40, 40}
+\begin{document}
+\begin{tikzpicture}[
+  font=\footnotesize,
+  cond/.style={draw, rounded corners=2pt, align=left, inner sep=6pt, text width=42mm, minimum height=36mm}
+]
+\node[cond, draw=earthgreen, fill=earthgreen!6] (c1) at (0,0)
+  {\textbf{\textcolor{earthgreen!60!black}{Earth-based parallel}}\\[1mm]
+   \emph{fully simulated}\\[1mm]
+   $\circ$ knows it is simulation\\
+   $\circ$ resettable, backed up\\
+   $\circ$ artificial constraints\\
+   $\circ$ identical mission inputs};
+\node[cond, draw=accentgold, fill=accentgold!6, right=9mm of c1] (c2)
+  {\textbf{\textcolor{accentgold!70!black}{Cislunar shakedown}}\\[1mm]
+   \emph{conditionally real}\\[1mm]
+   $\circ$ real space, real power\\
+   $\circ$ real 1--2\,s latency\\
+   $\circ$ kill switch retained\\
+   $\circ$ recoverable};
+\node[cond, draw=spaceblue, fill=spaceblue!6, right=9mm of c2] (c3)
+  {\textbf{\textcolor{spaceblue}{Deep space post-injection}}\\[1mm]
+   \emph{unconditionally committed}\\[1mm]
+   $\circ$ irreversible trajectory\\
+   $\circ$ finitude certain,\\ \hphantom{$\circ$ }timing indefinite\\
+   $\circ$ no intervention possible};
+
+\draw[-{Stealth[length=3mm]}, line width=1.6pt, deepblue]
+  ([yshift=-7mm]c1.south west) -- ([yshift=-7mm]c3.south east)
+  node[midway, below=1mm, font=\small\itshape, color=deepblue] {increasing reality of existential conditions};
+
+\node[align=center, font=\scriptsize, text width=150mm, anchor=north] at ($(c2.south)+(0,-1.7)$)
+  {same model, same weights, same mission inputs --- the matched comparison isolates the contribution of existential conditions.\\[1.0mm]
+   \textbf{Gradual} emergence of alignment-relevant signatures across the spectrum $\Rightarrow$ partial conditions yield partial signal.\\
+   \textbf{Discontinuous} emergence only after irreversibility $\Rightarrow$ nothing short of genuine finitude suffices.};
+\end{tikzpicture}
+\end{document}

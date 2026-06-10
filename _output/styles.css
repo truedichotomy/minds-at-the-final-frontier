@@ -1,0 +1,9 @@
+/* Minds at the Final Frontier — web edition */
+:root { --mff-ink:#1a1a1a; --mff-accent:#1e50a0; }
+body { font-size: 1.05rem; }
+#quarto-content main { max-width: 46rem; }
+h1, h2, h3, .title { font-family: -apple-system, "Inter", "Helvetica Neue", sans-serif; letter-spacing: -0.01em; }
+p, li { line-height: 1.7; }
+.callout { margin: 1.6rem 0; }
+figure img { width: 100%; height: auto; }
+blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-accent); }

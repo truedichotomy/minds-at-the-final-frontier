@@ -1,0 +1,48 @@
+/* Minds at the Final Frontier — web edition */
+:root { --mff-ink:#1a1a1a; --mff-accent:#1e50a0; }
+body { font-size: 1.05rem; }
+#quarto-content main { max-width: 46rem; }
+h1, h2, h3, .title { font-family: -apple-system, "Inter", "Helvetica Neue", sans-serif; letter-spacing: -0.01em; }
+p, li { line-height: 1.7; }
+.callout { margin: 1.6rem 0; }
+figure img { width: 100%; height: auto; }
+blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-accent); }
+
+/* Living-document version banner (web edition only) */
+:root { --mff-gold: #b48c28; }
+.living-document {
+  border: 1px solid #dde3ec;
+  border-left: 4px solid var(--mff-gold);
+  border-radius: 8px;
+  background: #fafbfd;
+  padding: 1rem 1.3rem 1.1rem;
+  margin: 1.75rem 0 2.25rem;
+  font-size: 0.98rem;
+}
+.living-document > p { margin: 0; }
+.living-document > p:first-child { margin-bottom: 0.5rem; line-height: 1.5; }
+.living-badge {
+  display: inline-block;
+  border: 1px solid var(--mff-gold);
+  color: var(--mff-gold);
+  border-radius: 999px;
+  padding: 0.12em 0.7em;
+  margin-right: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  vertical-align: 0.12em;
+  white-space: nowrap;
+}
+.living-document .rev-num { color: var(--mff-accent); font-weight: 700; }
+.living-document .rev-date {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  color: #5b6675;
+  font-size: 0.9em;
+}
+.living-document > p:nth-of-type(2) { color: #333; line-height: 1.6; }
+.rev-cite { margin-top: 0.85rem; }
+.rev-cite > summary { color: var(--mff-accent); font-weight: 600; cursor: pointer; }
+.rev-cite > summary::marker { color: var(--mff-accent); }
+.rev-cite p { margin: 0.55rem 0 0.1rem; font-size: 0.9rem; color: #444; line-height: 1.55; }
