@@ -1,1 +1,18 @@
+# OS cruft (matches at any depth)
 .DS_Store
+
+# Quarto build cache
+/.quarto/
+**/*.quarto_ipynb
+
+# Rendered output — built by CI (HTML) or locally (PDF); never committed.
+# Vector figures in /figures are the exception: they are committed source-of-record.
+/_output/
+/_site/
+
+# Stray render sidecars at the repo root (Quarto emits these next to inputs
+# when rendering without the project output-dir, e.g. during `quarto preview`)
+/*_files/
+
+# Locally built PDF (run `quarto render --to pdf` on demand)
+/index.pdf

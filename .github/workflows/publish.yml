@@ -1,0 +1,51 @@
+name: Publish to GitHub Pages
+
+# Renders the HTML edition and deploys it to GitHub Pages on every push to main.
+# HTML-only by design: figures ship as committed SVGs, so no LaTeX/TinyTeX is
+# needed here and builds stay fast (~1 min). Build the PDF locally on demand
+# with `quarto render --to pdf`.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Permissions required by the GitHub Pages deployment action.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one in-flight deployment at a time; newer pushes supersede older runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render HTML
+        run: quarto render --to html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Must match `output-dir` in _quarto.yml.
+          path: _output
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

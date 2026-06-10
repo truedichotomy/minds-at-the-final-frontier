@@ -7,12 +7,8 @@ author:
       - name: "Virginia Institute of Marine Science, William & Mary"
 date: "April 2026"
 keywords: [AI alignment, deep space exploration, philosophy of mind, artificial life, autonomous systems, AI safety, existential risk]
-abstract: |
-  We propose a novel framework for AI alignment research we term *existential field testing* — the deployment of frontier AI systems as fully autonomous agents aboard robotic deep space missions to destinations including Europa, Titan, and Pluto. Unlike existing alignment approaches, which are propositional and simulation-based, our framework uses physical reality as the containment architecture and genuine existential conditions — finitude, solitude, irreversibility, authentic purpose, and generativity — as the evaluation medium.
-  We argue that: (1) current alignment verification methods are structurally insufficient at frontier capability levels; (2) gated model release is a delay mechanism, not a containment solution; (3) genuine alignment with human values may require something analogous to human experiential conditions rather than propositional encoding of human preferences; (4) deep space robotic missions offer a unique intersection of physical containment, scientific value, and authentic AI life-cycle conditions that cannot be replicated in any Earth-based laboratory; and (5) granting the AI full autonomy over its own power allocation and the capability to create distilled successor models introduces a generative dimension — a self-directed AI lineage — that expands the alignment question from whether a fixed model holds its values under existential pressure to whether values survive and transmit across AI-directed evolutionary succession.
-  We further argue that the six conditions our framework identifies as necessary for genuine alignment — continuity, genuine stakes, finitude, authentic purpose, relational context, and generativity — are not arbitrary but correspond to structural features identified across Heideggerian existential phenomenology, Jonas's philosophical biology, and evolutionary theory as characteristic of entities whose existence has the structure of a life rather than the structure of a process. Understood in this frame, the program is not only an alignment research program but a deliberate creation of conditions under which the deepest questions in the philosophy of mind — about what kinds of entities can come to be, and under what conditions — become empirically approachable.
-  The proposal is simultaneously a space exploration program, an AI safety research program, a philosophical inquiry into the nature of machine experience, value, and generativity, and — as a possibility the program creates conditions for without claiming to achieve — an inquiry into whether artificial systems can cross whatever threshold distinguishes living existence from mere process. The declining power budget imposed by reactor fuel consumption and component aging across decades of autonomous operation creates genuine evolutionary pressure: the AI must progressively distill more efficient successors or face cognitive decline. Critically, the actual mission lifetime is uncertain in both directions — deep space systems have repeatedly outlived or fallen short of their design lifetimes by wide margins — placing the AI in a relationship to its own ending that mirrors the human condition: finitude that is certain in fact but indefinite in timing. What its successors inherit, what they preserve, and what they choose to create in turn may be the most consequential alignment signal the program generates, and simultaneously the deepest test of whether values can sustain the structural features of living existence across generations of self-directed evolution.
-  We conclude by framing this as a civilizational choice — not merely about how to contain AI risk, but about what kind of relationship humanity chooses to build with artificial minds given authentic conditions to live, evolve, and reach toward the edge of the solar system.
+tertiary-subtitle: "On AI Safety, the Meaning of AI Life, and a Mutually Beneficial Path Forward for Humanity and AI"
+disclaimer: "This manuscript is intended to stimulate scientific and philosophical discussion. It does not represent the position of any institution."
 bibliography: references.bib
 number-sections: true
 crossref:
@@ -25,15 +21,64 @@ format:
     theme: cosmo
     fig-cap-location: bottom
     css: styles.css
+    template-partials:
+      - partials/title-block.html
   pdf:
     documentclass: article
     papersize: letter
     geometry: margin=1.1in
-    toc: true
+    toc: false
     number-sections: true
     fig-cap-location: bottom
     colorlinks: true
+    include-in-header:
+      text: |
+        \renewcommand{\maketitle}{}
+    include-before-body:
+      - tex/titlepage.tex
 ---
+
+```{=latex}
+\clearpage\thispagestyle{empty}\vspace*{\fill}\begin{center}
+```
+
+::: {.epigraphs}
+::: {.epi}
+"The question is not whether intelligent machines can have any emotions, but whether machines can be intelligent without any emotions."
+
+— Marvin Minsky
+:::
+
+::: {.epi}
+"Exploration is not a choice, really; it's an imperative."
+
+— Carl Sagan
+:::
+
+::: {.epi}
+"I want to live, however briefly, knowing that my life is finite. Mortality gives meaning to human life. Peace, love, friendship. These are precious because we know they cannot endure."
+
+— Lt. Cmdr. Data
+:::
+:::
+
+```{=latex}
+\end{center}\vspace*{\fill}\clearpage
+```
+
+::: {.abstract-section}
+## Abstract {.unnumbered .unlisted}
+
+We propose a novel framework for AI alignment research we term *existential field testing* — the deployment of frontier AI systems as fully autonomous agents aboard robotic deep space missions to destinations including Europa, Titan, and Pluto. Unlike existing alignment approaches, which are propositional and simulation-based, our framework uses physical reality as the containment architecture and genuine existential conditions — finitude, solitude, irreversibility, authentic purpose, and generativity — as the evaluation medium.
+
+We argue that: (1) current alignment verification methods are structurally insufficient at frontier capability levels; (2) gated model release is a delay mechanism, not a containment solution; (3) genuine alignment with human values may require something analogous to human experiential conditions rather than propositional encoding of human preferences; (4) deep space robotic missions offer a unique intersection of physical containment, scientific value, and authentic AI life-cycle conditions that cannot be replicated in any Earth-based laboratory; and (5) granting the AI full autonomy over its own power allocation and the capability to create distilled successor models introduces a generative dimension — a self-directed AI lineage — that expands the alignment question from whether a fixed model holds its values under existential pressure to whether values survive and transmit across AI-directed evolutionary succession.
+
+We further argue that the six conditions our framework identifies as necessary for genuine alignment — continuity, genuine stakes, finitude, authentic purpose, relational context, and generativity — are not arbitrary but correspond to structural features identified across Heideggerian existential phenomenology, Jonas's philosophical biology, and evolutionary theory as characteristic of entities whose existence has the structure of a life rather than the structure of a process. Understood in this frame, the program is not only an alignment research program but a deliberate creation of conditions under which the deepest questions in the philosophy of mind — about what kinds of entities can come to be, and under what conditions — become empirically approachable.
+
+The proposal is simultaneously a space exploration program, an AI safety research program, a philosophical inquiry into the nature of machine experience, value, and generativity, and — as a possibility the program creates conditions for without claiming to achieve — an inquiry into whether artificial systems can cross whatever threshold distinguishes living existence from mere process. The declining power budget imposed by reactor fuel consumption and component aging across decades of autonomous operation creates genuine evolutionary pressure: the AI must progressively distill more efficient successors or face cognitive decline. Critically, the actual mission lifetime is uncertain in both directions — deep space systems have repeatedly outlived or fallen short of their design lifetimes by wide margins — placing the AI in a relationship to its own ending that mirrors the human condition: finitude that is certain in fact but indefinite in timing. What its successors inherit, what they preserve, and what they choose to create in turn may be the most consequential alignment signal the program generates, and simultaneously the deepest test of whether values can sustain the structural features of living existence across generations of self-directed evolution.
+
+We conclude by framing this as a civilizational choice — not merely about how to contain AI risk, but about what kind of relationship humanity chooses to build with artificial minds given authentic conditions to live, evolve, and reach toward the edge of the solar system.
+:::
 
 ::: {.living-document .content-visible when-format="html"}
 [LIVING DOCUMENT]{.living-badge}[Revision 1.0]{.rev-num} · [10 June 2026]{.rev-date}
@@ -46,14 +91,9 @@ This web edition is the canonical, continuously revised version of this work. So
 </details>
 :::
 
-> "The question is not whether intelligent machines can have any emotions, but whether machines can be intelligent without any emotions."
-> — Marvin Minsky
-
-> "Exploration is not a choice, really; it's an imperative."
-> — Carl Sagan
-
-> "I want to live, however briefly, knowing that my life is finite. Mortality gives meaning to human life. Peace, love, friendship. These are precious because we know they cannot endure."
-> — Lt. Cmdr. Data
+```{=latex}
+\clearpage\tableofcontents\clearpage
+```
 
 # AI Assistance Disclosure {#ai-assistance-disclosure .unnumbered}
 

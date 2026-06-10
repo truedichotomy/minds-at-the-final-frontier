@@ -46,3 +46,82 @@ blockquote { color: #444; font-style: italic; border-left: 3px solid var(--mff-a
 .rev-cite > summary { color: var(--mff-accent); font-weight: 600; cursor: pointer; }
 .rev-cite > summary::marker { color: var(--mff-accent); }
 .rev-cite p { margin: 0.55rem 0 0.1rem; font-size: 0.9rem; color: #444; line-height: 1.55; }
+
+/* ===== Editorial grandeur: serif display + full-screen hero & epigraphs ===== */
+:root { --mff-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Charter", Georgia, "Times New Roman", serif; }
+
+/* Title block as a full-screen opening (serif display; body stays sans) */
+#title-block-header.quarto-title-block {
+  min-height: 92vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 4vh 0 6vh; margin-bottom: 2rem;
+}
+#title-block-header .quarto-title { width: 100%; }
+#title-block-header .title {
+  font-family: var(--mff-serif); font-weight: 600;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 0.5rem;
+}
+#title-block-header .subtitle.lead {
+  font-family: var(--mff-serif); font-weight: 400;
+  font-size: clamp(1.12rem, 2.2vw, 1.4rem);
+  line-height: 1.45; color: #41464d; max-width: 34rem; margin: 0.7rem auto 0;
+}
+#title-block-header .subtitle-tertiary {
+  font-family: var(--mff-serif); font-style: italic;
+  font-size: 1.02rem; line-height: 1.5; color: #6a727c;
+  max-width: 30rem; margin: 0.9rem auto 0;
+}
+#title-block-header .quarto-title::after {
+  content: ""; display: block; width: 46px; height: 1px;
+  background: var(--mff-gold, #b48c28); opacity: 0.75; margin: 2rem auto 0;
+}
+#title-block-header .quarto-title-meta,
+#title-block-header .quarto-title-meta-author {
+  display: block; grid-template-columns: none; gap: 0;
+  text-align: center; margin-top: 2.2rem;
+}
+#title-block-header .quarto-title-meta-heading { display: none; }
+#title-block-header .quarto-title-meta-contents { display: block; }
+#title-block-header .author { font-size: 1.05rem; color: #1a1a1a; margin: 0; }
+#title-block-header .affiliation { font-size: 0.9rem; color: #555; margin: 0.25rem 0 0; }
+#title-block-header .date { font-size: 0.82rem; color: #777; letter-spacing: 0.05em; margin: 0.7rem 0 0; }
+#title-block-header .keywords { margin-top: 2rem; font-size: 0.8rem; color: #777; line-height: 1.7; max-width: 34rem; }
+#title-block-header .keywords .block-title { font-weight: 600; color: #555; display: inline; margin-right: 0.35rem; }
+#title-block-header .title-disclaimer {
+  font-family: var(--mff-serif); font-style: italic;
+  font-size: 0.8rem; color: #8a9098; line-height: 1.6;
+  max-width: 27rem; margin: 3rem auto 0;
+}
+
+/* Epigraphs: their own full screen */
+.epigraphs {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 8vh 0; gap: 3rem;
+}
+.epigraphs .epi { max-width: 33rem; }
+.epigraphs .epi p {
+  font-family: var(--mff-serif);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.55; color: #2a2a2a; margin: 0;
+}
+.epigraphs .epi p:last-child {
+  font-size: 0.92rem; color: #7a7f87; letter-spacing: 0.03em; margin-top: 0.9rem;
+}
+
+/* Abstract, lifted out of the title block */
+.abstract-section { max-width: 40rem; margin: 1rem auto 3.5rem; }
+.abstract-section h2 {
+  font-family: var(--mff-serif); font-weight: 600;
+  text-align: center; font-size: 1.5rem; margin-bottom: 1.2rem;
+}
+.abstract-section p { text-align: justify; }
+
+/* Body breathing room (sans body unchanged) */
+section.level1 > h1 { margin-top: 3.4rem; }
+section.level2 > h2 { margin-top: 2.4rem; }
+figure { margin-top: 2.2rem; margin-bottom: 2.2rem; }
